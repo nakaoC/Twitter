@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @notes = @user.notes #ユーザーidに対応したuser_idカラムを持っているnoteを取り出す
   end
 
   # GET /users/new

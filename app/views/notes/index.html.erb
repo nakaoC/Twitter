@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Notes</h1>
+<h1>ツイート一覧</h1>
 
 <table>
   <thead>
@@ -13,7 +13,8 @@
   <tbody>
     <% @notes.each do |note| %>
       <tr>
-        <td><%= note.content %></td>
+        <p><td><%= note.user.name%></td></p>
+        <p><td><%= note.content %></td></p>
         <td><%= link_to 'Show', note %></td>
         <td><%= link_to 'Edit', edit_note_path(note) %></td>
         <td><%= link_to 'Destroy', note, method: :delete, data: { confirm: 'Are you sure?' } %></td>
