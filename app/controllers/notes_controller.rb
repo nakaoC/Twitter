@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
   before_action :set_note, only: [:show, :edit, :update, :destroy]
 
+  before_action :authenticate_user! #全アクションはログインしていないと実行不可
   # GET /notes
   # GET /notes.json
   def index

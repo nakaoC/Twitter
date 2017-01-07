@@ -12,13 +12,16 @@
           <%= link_to "ツイッター", '#', id: "logo" %>
           <nav>
             <ul class="nav navbar-nav navbar-right">
-              <li><%= link_to "ログイン",   '#' %></li>
-              <li><%= link_to "新規登録",   '#' %></li>
-
+              <%if user_signed_in?%>
               <li><%= link_to "ツイート", new_note_path %></li>
               <li><%= link_to "ツイート一覧", notes_path%></li>
               <li><%= link_to "ログアウト", '#'%></li>
               <li><%= link_to "プロフィール設定", '#'%></li>
+
+              <%else%>
+              <li><%= link_to "ログイン",   '#' %></li>
+              <li><%= link_to "新規登録",   '#' %></li>
+              <%end%>
             </ul>
           </nav>
         </div>
