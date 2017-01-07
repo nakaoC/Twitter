@@ -16,7 +16,7 @@
               <li><%= link_to "ツイート", new_note_path %></li>
               <li><%= link_to "ツイート一覧", notes_path%></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete%></li>
-              <li><%= link_to "プロフィール設定", user_path(current_user.id)%></li>
+              <li><%= link_to "プロフィール", user_path(current_user.id)%></li>
 
               <%else%>
               <li><%= link_to "ログイン", new_user_session_path %></li>

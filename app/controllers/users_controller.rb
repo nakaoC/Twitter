@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  before_action :correct_user, only: [:edit,:update]
+
+  include ApplicationHelper
   # GET /users
   # GET /users.json
   def index
@@ -76,5 +79,12 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name)
+    end
+
+    def correct_user #ログイン中のユーザーと、アクセスしたページのユーザーが異なる場合はrootバスにリダイレクト
+      user = User.find(params[:id])
+      if !current_user?(user)
+        redirect_to root_path
+      end
     end
 end
