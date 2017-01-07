@@ -1,9 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<h1><%= @user.name %></h1>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<h2>ツイート</h2>
+<%= @user.notes.each do |note|%>
+<p><%= link_to note.content, note_path(note.id)%></p>
+<%end%>
+<%= link_to '各種設定', edit_user_path(@user) %> |
+<%= link_to 'ユーザー一覧へ', users_path %>
