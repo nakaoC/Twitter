@@ -14,16 +14,18 @@ class UsersController < ApplicationController
   end
 
   # GET /users/new
+=begin
   def new
     @user = User.new
   end
-
+=end
   # GET /users/1/edit
   def edit
   end
 
   # POST /users
   # POST /users.json
+=begin
   def create
     @user = User.new(user_params)
 
@@ -40,7 +42,7 @@ class UsersController < ApplicationController
       end
     end
   end
-
+=end
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update

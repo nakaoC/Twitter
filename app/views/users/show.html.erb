@@ -6,5 +6,9 @@
 <%= @user.notes.each do |note|%>
 <p><%= link_to note.content, note_path(note.id)%></p>
 <%end%>
-<%= link_to '各種設定', edit_user_path(@user) %> |
+
 <%= link_to 'ユーザー一覧へ', users_path %>
+
+<%if current_user.id == @user.id%> 
+<%= link_to '各種設定', edit_user_path(@user) %>
+<%end%>
