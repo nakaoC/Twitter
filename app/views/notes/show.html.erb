@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
-
+<p><%= image_for(@note.user)%><%= link_to @note.user.name, user_path(@note.user.id)%></p>
 <p>
-  <strong>Content:</strong>
   <%= @note.content %>
 </p>
 

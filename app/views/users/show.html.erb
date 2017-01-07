@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @user.name %></h1>
-
+<h1><%= image_for(@user)%><%= @user.name %></h1>
+<br>
 <h2>ツイート</h2>
 <%= @user.notes.each do |note|%>
 <p><%= link_to note.content, note_path(note.id)%></p>
@@ -9,6 +9,6 @@
 
 <%= link_to 'ユーザー一覧へ', users_path %>
 
-<%if current_user.id == @user.id%> 
+<%if current_user.id == @user.id%>
 <%= link_to '各種設定', edit_user_path(@user) %>
 <%end%>
