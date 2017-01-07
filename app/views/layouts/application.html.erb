@@ -7,8 +7,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header class="navbar navbar-fixed-top navbar-inverse">
+       <div class="container">
+          <%= link_to "ツイッター", '#', id: "logo" %>
+          <nav>
+            <ul class="nav navbar-nav navbar-right">
+              <li><%= link_to "ログイン",   '#' %></li>
+              <li><%= link_to "新規登録",   '#' %></li>
 
+              <li><%= link_to "ツイート", '#' %></li>
+              <li><%= link_to "ログアウト", '#'%></li>
+              <li><%= link_to "プロフィール設定", '#'%></li>
+            </ul>
+          </nav>
+        </div>
+  </header>
+
+<div class = "container">
+  <div class="center jumbotron">
 <%= yield %>
-
+  </div>
+</div>
 </body>
 </html>
