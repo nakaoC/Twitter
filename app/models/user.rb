@@ -2,4 +2,14 @@ class User < ActiveRecord::Base
   has_many :notes
 
   validates :name, presence: true
+
+  #画像をセットする
+  def set_image(file)
+    if !file.nil? #画像データを受け取ったら
+      file_name = file.original_filename
+
+      File.open("public/user_images/#{file_name}",'wb'){|f|f.write(file.read)} #保存先を指定して保存
+      self.image = file_name #userインスタンスに画像データを設定
+    end
+  end
 end

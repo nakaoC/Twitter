@@ -28,12 +28,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     file = params[:user][:image] #ユーザーから画像データを受け取る
-    if !file.nil? #画像データを受け取ったら
-      file_name = file.original_filename
-
-      File.open("public/user_images/#{file_name}",'wb'){|f|f.write(file.read)} #保存先を指定して保存
-      @user.image = file_name #userインスタンスに画像データを設定
-    end
+    @user.set_image(file)
 
     respond_to do |format|
       if @user.save
