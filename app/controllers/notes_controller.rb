@@ -27,7 +27,7 @@ class NotesController < ApplicationController
   # POST /notes
   # POST /notes.json
   def create
-    @note = Note.new(note_params)
+    @note = current_user.notes.build(note_params) #現在のユーザーidをセットしつつ、note_paramsメソッドでcontentを受け取る
 
     respond_to do |format|
       if @note.save
