@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
   before_action :authenticate_user! #全アクションはログインしていないと実行不可
-  before_action :set_note, only: [:show, :edit, :update, :destroy]
+  before_action :set_note, only: [:show, :edit, :update, :destroy, :liking_users]
   before_action :correct_user, only: [:edit, :update]
 
   include ApplicationHelper
@@ -62,6 +62,10 @@ class NotesController < ApplicationController
       format.html { redirect_to notes_url, notice: 'Note was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def liking_users
+    @users = @note.liking_users
   end
 
   private

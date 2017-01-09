@@ -5,7 +5,11 @@ Rails.application.routes.draw do
       get :like_notes #users/:id/like_notesというルーティングを生成
     end
   end
-  resources :notes
+  resources :notes do
+    member do
+      get :liking_users #notes/:id/liking_usersというルーティングを生成
+    end
+  end
 
   root 'notes#index'
 
