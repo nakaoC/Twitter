@@ -4,9 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,:validatable
          #:recoverable, :rememberable, :trackable,
   has_many :notes
+  has_many :likes
 
   validates :name, presence: true
-  
+
 
   #画像をセットする
   def set_image(file)
