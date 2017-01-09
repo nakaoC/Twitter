@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: [:index, :show, :edit, :update]
+  resources :users, only: [:index, :show, :edit, :update] do
+    member do
+      get :like_notes #users/:id/like_notesというルーティングを生成
+    end
+  end
   resources :notes
 
   root 'notes#index'

@@ -9,7 +9,7 @@
 <%else%>
 <p><%= link_to 'いいね', like_path(@note.id), method: :post%></p>
 <%end%>
-
+<p>いいね<%= @note.likes.count%>件</p>
 <%= link_to 'Back', notes_path %>
 
 <%if current_user.id == @note.user.id%>

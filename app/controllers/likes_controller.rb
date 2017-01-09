@@ -13,4 +13,6 @@ class LikesController < ApplicationController
     like.destroy
     redirect_to note
   end
+
+
 end

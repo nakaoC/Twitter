@@ -1,14 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= image_for(@user)%><%= @user.name %></h1>
-<br>
-<h2>ツイート</h2>
-<%= @user.notes.each do |note|%>
-<p><%= link_to note.content, note_path(note.id)%></p>
-<%end%>
-
-<%= link_to 'ユーザー一覧へ', users_path %>
-
 <%if current_user.id == @user.id%>
-<%= link_to '各種設定', edit_user_path(@user) %>
+<p><%= link_to '各種設定', edit_user_path(@user) %></p>
 <%end%>
+<br>
+<h2><%= @title%></h2>
+<%if @title == "投稿一覧"%>
+ <%= @user.notes.each do |note|%>
+ <p><%= link_to note.content, note_path(note.id)%></p>
+ <%end%>
+ <h3><%= link_to "いいね一覧へ", like_notes_user_path(@user.id)%></h3>
+<%else%>
+ <%= @user.like_notes.each do |note|%>
+ <p><%= link_to note.content, note_path(note.id)%></p>
+ <%end%>
+ <h3><%= link_to "このユーザーの投稿一覧へ", user_path(@user.id)%></h3>
+<%end%>
+
+
+<p><%= link_to 'ユーザー一覧へ', users_path %></p>
+

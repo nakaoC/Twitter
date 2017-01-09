@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :like_notes]
 
   before_action :correct_user, only: [:edit,:update]
 
@@ -14,38 +14,14 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
     @notes = @user.notes #ユーザーidに対応したuser_idカラムを持っているnoteを取り出す
+    @title = "投稿一覧"
   end
 
-  # GET /users/new
-=begin
-  def new
-    @user = User.new
-  end
-=end
   # GET /users/1/edit
   def edit
   end
 
-  # POST /users
-  # POST /users.json
-=begin
-  def create
-    @user = User.new(user_params)
 
-    file = params[:user][:image] #ユーザーから画像データを受け取る
-    @user.set_image(file)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-=end
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
@@ -68,6 +44,13 @@ class UsersController < ApplicationController
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def like_notes
+    @notes = @user.like_notes
+    @title = "いいね一覧"
+
+    render :show
   end
 
   private

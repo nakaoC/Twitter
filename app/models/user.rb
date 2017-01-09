@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
          #:recoverable, :rememberable, :trackable,
   has_many :notes
   has_many :likes
-
+  has_many :like_notes, through: :likes, source: :note
+  #              likesテーブルを経由して↑          　↑likeに紐付いたnoteを取りに行く
   validates :name, presence: true
 
 
