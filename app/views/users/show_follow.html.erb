@@ -1,0 +1,6 @@
+<h1><%= @title%></h1>
+<%if @users.any?%>
+ <%= @users.each do |user|%>
+ <%= link_to user.name, user%>
+ <%end%>
+<%end%>

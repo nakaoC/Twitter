@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <h1><%= image_for(@user)%><%= @user.name %></h1>
+
+<%= render 'follow_form' if signed_in?%><!--フォロー/フォロー解除ボタン -->
+
+<p><%= "#{@user.followed_users.count}フォロー"%>|<%= "#{@user.followers.count}フォロワー"%></p>
+
 <%if current_user.id == @user.id%>
 <p><%= link_to '各種設定', edit_user_path(@user) %></p>
 <%end%>

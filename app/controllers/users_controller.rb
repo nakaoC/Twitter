@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :like_notes]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :like_notes, :following, :followers]
 
   before_action :correct_user, only: [:edit,:update]
 
@@ -51,6 +51,18 @@ class UsersController < ApplicationController
     @title = "いいね一覧"
 
     render :show
+  end
+
+  def following
+    @title = "フォロー"
+    @users = @user.followed_users.paginate(page: params[:page])
+    render 'show_follow'
+  end
+
+  def followers
+    @title = "フォロワー"
+    @users = @user.followers.paginate(page: params[:page])
+    render 'show_follow'
   end
 
   private

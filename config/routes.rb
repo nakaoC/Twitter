@@ -12,10 +12,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :relationships, only: [:create, :destroy]
   root 'notes#index'
 
   post 'like/:note_id' => 'likes#like', as: 'like' #いいね機能
   delete 'unlike/:note_id' => 'likes#unlike', as: 'unlike' #いいね取り消し
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

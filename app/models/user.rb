@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   #                                       ↑Relationshipモデルにuser_idカラムがないため、Userモデルがどのカラムを参照するかを示す必要がある
 
   has_many :followed_users, through: :relationships, source: :followed #このインスタンスがフォローしているユーザーを取り出すメソッドを作る
-  has_many :followers, through: :relationships, source: :follower #このインスタンスをフォローしているユーザーを取り出すメソッドを作る
+  has_many :followers, through: :reverse_relationships, source: :follower #このインスタンスをフォローしているユーザーを取り出すメソッドを作る
 
   validates :name, presence: true
 
