@@ -4,7 +4,7 @@
 
 <%= render 'follow_form' if signed_in?%><!--フォロー/フォロー解除ボタン -->
 
-<p><%= "#{@user.followed_users.count}フォロー"%>|<%= "#{@user.followers.count}フォロワー"%></p>
+<p><%= link_to "#{@user.followed_users.count}フォロー", following_user_path(@user.id)%>|<%= link_to "#{@user.followers.count}フォロワー", followers_user_path(@user.id)%></p>
 
 <%if current_user.id == @user.id%>
 <p><%= link_to '各種設定', edit_user_path(@user) %></p>
