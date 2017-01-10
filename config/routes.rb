@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :edit, :update] do
     member do
       get :like_notes #users/:id/like_notesというルーティングを生成
+      get :following, :followers
     end
   end
   resources :notes do
